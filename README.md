@@ -33,59 +33,59 @@ the email message if you wish.
 
 Here is the example configuration unchanged:
 
-# Required to connect to your outgoing mail server. Example for using gmail:
-# gmail
-SMTP_SERVER: smtp.gmail.com
-SMTP_PORT: 587
-USERNAME: NOOOOOOO@NOOO.COM
-PASSWORD: NOOOOOOOOOOOOOO
+	# Required to connect to your outgoing mail server. Example for using gmail:
+	# gmail
+	SMTP_SERVER: smtp.gmail.com
+	SMTP_PORT: 587
+	USERNAME: NOOOOOOO@NOOO.COM
+	PASSWORD: NOOOOOOOOOOOOOO
 
-TIMEZONE: 'US/Pacific'
+	TIMEZONE: 'US/Pacific'
 
-PARTICIPANTS:
-  - Chad <nooo+Chad@gmail.com> [Insert List Objects Here 1]
-  - Jen <nooo+Jen@gmail.com> [Insert List Objects Here 2]
-  - Bill <nooo+Bill@gmail.com> [Insert List Objects Here 3]
-  - Sharon <nooo+Sharon@gmail.com> [Insert List Objects Here 4]
+	PARTICIPANTS:
+	  - Chad <nooo+Chad@gmail.com> [Insert List Objects Here 1]
+	  - Jen <nooo+Jen@gmail.com> [Insert List Objects Here 2]
+	  - Bill <nooo+Bill@gmail.com> [Insert List Objects Here 3]
+	  - Sharon <nooo+Sharon@gmail.com> [Insert List Objects Here 4]
 
 
-# Warning -- if you mess this up you could get an infinite loop
-DONT-PAIR:
-  - Chad, Jen    # Chad and Jen are married
-  - Chad, Bill   # Chad and Bill are best friends
-  - Bill, Sharon
+	# Warning -- if you mess this up you could get an infinite loop
+	DONT-PAIR:
+	  - Chad, Jen    # Chad and Jen are married
+	  - Chad, Bill   # Chad and Bill are best friends
+	  - Bill, Sharon
 
-# From address should be the organizer in case participants have any questions
-FROM: SecretSantaAdmin <nooo+santaadmin@gmail.com>
+	# From address should be the organizer in case participants have any questions
+	FROM: SecretSantaAdmin <nooo+santaadmin@gmail.com>
 
-# Both SUBJECT and MESSAGE can include variable substitution for the 
-# "santa" and "santee"
-SUBJECT: Santa {santa}! Your secret santa recipient is {santee}! Read Inside for Details!
-MESSAGE: |
+	# Both SUBJECT and MESSAGE can include variable substitution for the 
+	# "santa" and "santee"
+	SUBJECT: Santa {santa}! Your secret santa recipient is {santee}! Read Inside for Details!
+	MESSAGE: |
 
-  Dear {santa},
+	  Dear {santa},
   
-  This year you are {santee}'s Secret Santa!. Ho Ho Ho!
+	  This year you are {santee}'s Secret Santa!. Ho Ho Ho!
 
-  As a reminder, this years format is as follows:
-  <Replace with your Rules and Instructions>
+	  As a reminder, this years format is as follows:
+	  <Replace with your Rules and Instructions>
   
-  For the Secret Santa Matching, again your recipient is {santee}!
-  The spending target for your secret santa is about $50.00 - below you will find a wishlist/suggested categories of gifts for your recipient.
-  <Replace with your Additional Details>
+	  For the Secret Santa Matching, again your recipient is {santee}!
+	  The spending target for your secret santa is about $50.00 - below you will find a wishlist/suggested categories of gifts for your recipient.
+	  <Replace with your Additional Details>
 
-  As a reminder: <Your Reminders>
+	  As a reminder: <Your Reminders>
   
-  {santee}'s Wishlist/Gift Ideas
-  ===================
-  {santee_list}
+	  {santee}'s Wishlist/Gift Ideas
+	  ===================
+	  {santee_list}
 
   
-  This message was automagically generated from a computer. 
+	  This message was automagically generated from a computer. 
   
-  Nothing could possibly go wrong...
+	  Nothing could possibly go wrong...
   
-  http://github.com/dreamwraith/secret-santa
+	  http://github.com/dreamwraith/secret-santa
   
 
 Once configured, call secret-santa:
