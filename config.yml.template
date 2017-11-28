@@ -25,7 +25,7 @@ FROM: SecretSantaAdmin <nooo+santaadmin@gmail.com>
 
 # Both SUBJECT and MESSAGE can include variable substitution for the 
 # "santa" and "santee"
-SUBJECT: Your secret santa recipient is {santee}
+SUBJECT: Santa {santa}! Your secret santa recipient is {santee}! Read Inside for Details!
 MESSAGE: |
 
   Dear {santa},
@@ -33,21 +33,13 @@ MESSAGE: |
   This year you are {santee}'s Secret Santa!. Ho Ho Ho!
 
   As a reminder, this years format is as follows:
-  We will be doing a "two tiered" gift exchange - one Secret Santa gift, and one small, fun gift to throw into the pot as part of a white elephant stealing/exchange.
-  For the small white elephant gift: Keep the cost in the range of 20 dollars give or take - this should be a fun gift that people will *want* to fight over to keep.
-  After all, the stealing is what makes the white elephant fun - and we don't want anyone feeling jipped out of getting something fairly :) 
-  The white elephant gifts should not be "person specific" - as a good rule of thumb, make the gift something YOU would want to keep.
-  Then you can try and make it your goal to steal it back (or steal something even better :D ).
+  <Replace with your Rules and Instructions>
   
   For the Secret Santa Matching, again your recipient is {santee}!
   The spending target for your secret santa is about $50.00 - below you will find a wishlist/suggested categories of gifts for your recipient.
-  It is not required to stick to this list, but is included as a helpful suggestion and/or to make shopping a little easier.
-  Part of doing the secret santa is to lessen the load both financially and shopping wise on everyone, so hopefully that gives you a bit more time to find a great gift! :)
+  <Replace with your Additional Details>
 
-  As a reminder: Your Secret Santa Gift should ONLY be marked with the recipients name - and to avoid exposing who the individuals secret santa is prior to our opening time,
-  when we arrive on christmas day, try and be a little sneaky placing the gift under the tree :)
-
-  For the White Elephant Gifts - Leave these unmarked :)
+  As a reminder: <Your Reminders>
   
   {santee}'s Wishlist/Gift Ideas
   ===================
@@ -59,4 +51,3 @@ MESSAGE: |
   Nothing could possibly go wrong...
   
   http://github.com/dreamwraith/secret-santa
-  
