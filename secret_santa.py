@@ -46,13 +46,14 @@ Subject: {subject}
 CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config.yml')
 
 class Person:
-    def __init__(self, name, email, invalid_matches):
+    def __init__(self, name, email, wishlist, invalid_matches):
         self.name = name
         self.email = email
+        self.wishlist = wishlist
         self.invalid_matches = invalid_matches
     
     def __str__(self):
-        return "%s <%s>" % (self.name, self.email)
+        return "%s <%s> [%s]" % (self.name, self.email, self.wishlist)
 
 class Pair:
     def __init__(self, giver, reciever):
@@ -123,7 +124,7 @@ def main(argv=None):
         
         givers = []
         for person in participants:
-            name, email = re.match(r'([^<]*)<([^>]*)>', person).groups()
+            name, email, wishlist = re.match(r'([^<]*)<([^>]*)> *\[([^\]]*)]', person).groups()
             name = name.strip()
             invalid_matches = []
             for pair in dont_pair:
@@ -133,7 +134,7 @@ def main(argv=None):
                     for member in names:
                         if name != member:
                             invalid_matches.append(member)
-            person = Person(name, email, invalid_matches)
+            person = Person(name, email, wishlist, invalid_matches)
             givers.append(person)
         
         recievers = givers[:]
@@ -153,12 +154,14 @@ call with the --send argument:
         
         if send:
             server = smtplib.SMTP(config['SMTP_SERVER'], config['SMTP_PORT'])
+            server.ehlo()
             server.starttls()
+            server.ehlo()
             server.login(config['USERNAME'], config['PASSWORD'])
         for pair in pairs:
             zone = pytz.timezone(config['TIMEZONE'])
             now = zone.localize(datetime.datetime.now())
-            date = now.strftime('%a, %d %b %Y %T %Z') # Sun, 21 Dec 2008 06:25:23 +0000
+            date = now.strftime('%a, %d %b %Y %H:%M:%S %Z') # Sun, 21 Dec 2008 06:25:23 +0000
             message_id = '<%s@%s>' % (str(time.time())+str(random.random()), socket.gethostname())
             frm = config['FROM']
             to = pair.giver.email
@@ -171,6 +174,7 @@ call with the --send argument:
                 subject=subject,
                 santa=pair.giver.name,
                 santee=pair.reciever.name,
+                santee_list=pair.reciever.wishlist,
             )
             if send:
                 result = server.sendmail(frm, [to], body)
